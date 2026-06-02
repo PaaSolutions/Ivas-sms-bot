@@ -13,11 +13,12 @@ let lastMessages = new Set();
 let messageCount = 0;
 let startTime = Date.now();
 
-// FRESH COOKIES FROM YOUR LAST REQUEST (June 2, 2026)
+// FRESH COOKIES FROM YOUR LATEST REQUEST (June 2, 2026 - 08:04)
 let COOKIES = {
-    "XSRF-TOKEN": "eyJpdiI6IjhtNGtXaHZHZEp0dEtNL1NPZkEydFE9PSIsInZhbHVlIjoib2ZORWY1TWpwd1doQjNDT2VUeCtLY1FTSGZRdVlyS0pJZ0plN0tjTU5sZkhOckovNGc2M3ZzSXA3dHRSYzB0cnZmczdJNjZrUFZkbzBYeVRvUDk3VDI5UlkzdUJ5YzIrazNKaWhwc0ZXaWhnL1crOTU4SzJ5aGJ2WExtMk9jT08iLCJtYWMiOiI1N2UyNWVlNDRiZDc1MmZhNzE5OWIxMGY1ZjMwMzZkYzMxZWM5M2RjN2JmYzdkMGFkYTU0YTJlNGZmYTUzNmM1IiwidGFnIjoiIn0%3D",
-    "ivas_sms_session": "eyJpdiI6ImdpZ3gzV3NtWEhjdHh1SW4yWXQ5OUE9PSIsInZhbHVlIjoiQjBpaHRadFhwc3hrNUtwTnhCMEk2WEdJaWZ4OStsd0xNdmVRK2twUTZ2QzZ3YlZoQUhJeXF3eHMzTzZOVS85SE9XYWsrRDI5Ykx6UWRYWDB2ek1sZlZrZkg5eUU2MW95VmEvMExjaWxSejM1UldLMUgrcFQ3SDhObS9BbUxaL00iLCJtYWMiOiI0MTBhN2IxNjhmMjFkNzMxZDI1MmM1NjkwNmNmNDg4MjUxMWU4Y2NiNDU1NDdmMjdjNjM5NDYwYzBmNDNjMzQ1IiwidGFnIjoiIn0%3D",
-    "cf_clearance": "3pMgU8wgEe_uySzEL30GTApKpC2BIztcdYSJnkFI0HA-1780383599-1.2.1.1-jt8QxWQTpgOvhVnQ3ekkyOdI1PbUryUeL5CaquZCqzeu2.uK9V0E.a4yirXddfc1jvF6qXQz9eva1M.31ldu0sQtB25LLFUiZGZhMgQja7SpEoLt6QFtomIyChT9UGk3h1I_nWf1Q_8eTF8ct8CHY2I1g7Zl50FevNNUZ8qIljEubnfM3aZcxD5iqs.xzoLMsYqEx8M.SR9PQoVlqys57m2ac__9uNnfY8AfB83mL2B6mWC4aWqjB8W4sqmKcV75azWsUst.vofE0gq1PUACUnPC7b5YB05nGbKHbDbLh5PENExrWrM9vPjt.Le3p3yAdZ9IE4EbOM_PfbY1sDM0_cyq1bzCS9OP2wiJX2oh86NWbdKEfpCdG5DD.CNvEfnHAaBiCq.eblVMQHHQp870zCJrOZUVOotRrJaoUABvIRc"
+    "XSRF-TOKEN": "eyJpdiI6Im5GS3NzWDYvQUtvWHMyVW9BRmRFTFE9PSIsInZhbHVlIjoib2JyUFJsczRIN0ltczJKNTVweVpRZ0pQcDRWK2hBZ1ZpUmN6ODFTb3V1cjhLS1QyVHNzSi93Z0VCS3BiYXFqNGRjbUdpUkxqRTlFdnoxSXc3Y1JBWEJsSnJsTktUL3ZucnBaOGl5UGlhd0tVOVNqR2Rub3lXMVMvUHNHRHhUQmgiLCJtYWMiOiJjY2Y3ZWEwNDU1MDliNmUyYzkwMjQwNzA4OTgxMmUxY2JkZmYxNGEyY2IwNjA4M2JkMTVkN2RkZGVhNGZiY2Y1IiwidGFnIjoiIn0%3D",
+    "ivas_sms_session": "eyJpdiI6IjQ4YkcvQ0VIVWs2MUhVUnhXVU9MbGc9PSIsInZhbHVlIjoiYmJMK1lHSkIycjYzZnNSVmVJZmwvS1FBSTNpdU9TamxtRlZpMDhQeVZlT1NESmhURXZERVZQYjJQK1NUMUtTeEdnaUl2MytMbU04STU1U3draHU2SWswRW5nY2RCMEx2bXVNWnBnTTVpcXJKVGs3SlZNRCtoRUYvWkl0Zis0MGEiLCJtYWMiOiIzMDk3MDg3MGQzNmI0YTU5MzAzNzYwY2U0M2UyZmIxMzhhN2U1ZTFjZjMwMGI4N2RhOTY0NTI1Yjk1MmMwNmFmIiwidGFnIjoiIn0%3D",
+    "cf_clearance": "zTHW0Ilxj.Pf.vrpTuqLX3.FDX2vMfemw.zhAHe1Hi8-1780387453-1.2.1.1-WeSr6qxpRbZOFREtEq7AXmJW_7YdoBrk_hBQxkDQCwSzA8UwcI66Li1KeKqmNyUFanvXoA.Ql1DJw4pxBokWvuGCjsrWutd1jSS5F2638ejYutj7IwsO_rLwzEpcqRSSLI3S533a.0JbzlYO0aLzSwaR7R5QGXmsTmaY43595uFbzQcJ23X3R8oqUzlapoPx0dta7ZYPTWl4.m_cK_QAA6Dyuea6ULR7pF3YppzccrCP7baEIyTgrRh_S7B0Og6F7L2IAvCCZvHbx4VfJNbLOWOPnLlE7W87s3y4ta4bIo6O..s_uei9yFdxU43nHir5TB.IlrqBqGlouJF0fo9sE.dc6ClgdTTOasJed3FTNYmAIjewwRdrYgY_ZhDEyN.fclR6Fdotc0gVPEnDdIRDyCIKRhLjirOwYEgWgPoPKdM",
+    "_fbp": "fb.1.1780367288515.358310450583681567"
 };
 
 const log = {
@@ -73,17 +74,15 @@ function detectService(message, sender) {
     if (combined.includes('telegram')) return { icon: '🔵', name: 'Telegram' };
     if (combined.includes('whatsapp')) return { icon: '🟢', name: 'WhatsApp' };
     if (combined.includes('imo')) return { icon: '💬', name: 'IMO' };
-    if (combined.includes('facebook')) return { icon: '📘', name: 'Facebook' };
     return { icon: '📨', name: 'SMS' };
 }
 
 function getCountryFlag(number) {
     const clean = number.replace(/\D/g, '');
-    if (clean.startsWith('263')) return '🇿🇼';
-    if (clean.startsWith('58')) return '🇻🇪';
-    if (clean.startsWith('7')) return '🇰🇿';
     if (clean.startsWith('225')) return '🇨🇮';
     if (clean.startsWith('237')) return '🇨🇲';
+    if (clean.startsWith('263')) return '🇿🇼';
+    if (clean.startsWith('58')) return '🇻🇪';
     return '📱';
 }
 
@@ -136,7 +135,7 @@ async function getToken() {
         }
         return null;
     } catch (error) {
-        if (error.response?.status === 403) log.error('Cloudflare blocking - cookies may be expired');
+        if (error.response?.status === 403) log.error('Cloudflare blocking - need fresh cookies');
         return null;
     }
 }
@@ -272,18 +271,19 @@ async function main() {
     console.log(`  ⏱️  Check Interval: 7 seconds`);
     console.log('═'.repeat(60) + '\n');
     
-    log.info('Starting bot with pre-configured cookies...');
+    log.info('Starting bot with fresh cookies...');
     
     const token = await getToken();
     if (!token) {
-        log.error('Failed to get token with current cookies');
-        await sendTelegramMessage(`<b>❌ Authentication Failed</b>\n\nCookies may have expired. Please get fresh cookies from your browser.\n\n━━━━━━━━━━━━━━━━━━━━━━\n<i>All credits goes to ${CREATOR} 🗿</i>`);
+        log.error('Failed to get token - cookies may be expired');
+        await sendTelegramMessage(`<b>❌ Authentication Failed</b>\n\nCookies expired. Please get fresh cookies.\n\n━━━━━━━━━━━━━━━━━━━━━━\n<i>All credits goes to ${CREATOR} 🗿</i>`);
         return;
     }
     
     await sendTelegramMessage(`<b>✅ IVA SMS Monitor Active</b>\n\n` +
         `• Session: Active\n` +
         `• Check Interval: 7s\n` +
+        `• Ranges: IVORY COAST, CAMEROON\n` +
         `• Monitoring for new messages...\n\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n` +
         `<i>All credits goes to ${CREATOR} 🗿</i>`);
