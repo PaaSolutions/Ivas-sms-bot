@@ -3,10 +3,10 @@ const express = require('express');
 const crypto = require('crypto');
 
 // Configuration
-const BOT_TOKEN = '8627509525:AAESth4wK45uHcaDK49oNgCwFNPSfd5vCf8';
-const CHAT_ID = '-1004297132684';
+const BOT_TOKEN = '8688032118:AAERUxid2_cIlkrCYUxoOkSxvGuT1yMY_aQ';
+const CHAT_ID = '-4995814783';
 const CHECK_INTERVAL = 7000;
-const CREATOR = '@K1XTREME';
+const CREATOR = '@masthopa';
 
 // State
 let lastMessages = new Set();
